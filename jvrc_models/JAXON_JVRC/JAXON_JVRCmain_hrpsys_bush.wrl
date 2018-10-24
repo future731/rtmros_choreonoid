@@ -482,6 +482,32 @@ DEF JAXON_JVRC Humanoid {
                               fieldOfView 1.5708
                               sensorId 1
                             }
+                            DEF HEAD_LEFT_POINTGREY_CAMERA VisionSensor {
+                              name "LEFT_POINTGREY_CAMERA"
+                              translation 0.0957 0.115 0.0495
+                              rotation 0.57735026919 -0.57735026919 -0.57735026919 2.094395102393
+                              type "COLOR"
+                              frontClipDistance 0.05
+                              backClipDistance  30.0
+                              width 1280
+                              height 1024
+                              frameRate 100
+                              fieldOfView 0.5726
+                              sensorId 7
+                            }
+                            DEF HEAD_RIGHT_POINTGREY_CAMERA VisionSensor {
+                              name "RIGHT_POINTGREY_CAMERA"
+                              translation 0.0957 -0.115 0.0495
+                              rotation 0.57735026919 -0.57735026919 -0.57735026919 2.094395102393
+                              type "COLOR"
+                              frontClipDistance 0.05
+                              backClipDistance  30.0
+                              width 1280
+                              height 1024
+                              frameRate 100
+                              fieldOfView 0.5726
+                              sensorId 8
+                            }
                             DEF HeadMainLight SpotLightDevice {
                               translation 0.1005 0.035 0.05425
                               # rotation

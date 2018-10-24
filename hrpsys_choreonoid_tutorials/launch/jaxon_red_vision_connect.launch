@@ -39,6 +39,21 @@
         pkg="topic_tools" type="relay"
         args="/multisense_local/left/image_rect_color /multisense_local/left/image_rect" />
 
+  <node pkg="hrpsys_ros_bridge" name="HEADLEFTPOINTGREY"
+        type="ImageSensorROSBridge"
+        output="$(arg OUTPUT)" args="$(arg openrtm_args)" ns="pointgrey/left">
+    <param name="frame_id" value="left_pointgrey_camera_optical_frame" />
+    <rosparam param="camera_param_K">[240, 0, 319.5,  0, 240, 239.5,  0, 0, 1]</rosparam>
+    <rosparam param="camera_param_P">[240, 0, 319.5, 0,  0, 240, 239.5, 0,  0, 0, 1, 0]</rosparam>
+    <rtconnect from="JAXON_RED(Robot)0.rtc:HEAD_LEFT_POINTGREY_CAMERA"
+               to="HEADLEFTPOINTGREY.rtc:timedImage" />
+    <rtactivate component="HEADLEFTPOINTGREY.rtc" />
+    <remap from="image_raw" to="image_rect_color" />
+  </node>
+  <node name="left_pointgrey_image_rect_relay"
+        pkg="topic_tools" type="relay"
+        args="/pointgrey/left/image_rect_color /pointgrey/left/image_rect" />
+
   <node pkg="hrpsys_ros_bridge" name="HEADRIGHT"
         type="ImageSensorROSBridge"
         output="$(arg OUTPUT)" args="$(arg openrtm_args)" ns="multisense_local/right">
@@ -53,6 +68,22 @@
   <node name="multisense_right_image_rect_relay"
         pkg="topic_tools" type="relay"
         args="/multisense_local/right/image_rect_color /multisense_local/right/image_rect" />
+
+  <node pkg="hrpsys_ros_bridge" name="HEADRIGHTPOINTGREY"
+        type="ImageSensorROSBridge"
+        output="$(arg OUTPUT)" args="$(arg openrtm_args)" ns="pointgrey/right">
+    <!-- right camera tf is calculated from left camera frame -->
+    <param name="frame_id" value="left_pointgrey_camera_optical_frame" />
+    <rosparam param="camera_param_K">[240, 0, 319.5,  0, 240, 239.5,  0, 0, 1]</rosparam>
+    <rosparam param="camera_param_P">[240, 0, 319.5, 0,  0, 240, 239.5, 0,  0, 0, 1, 0]</rosparam>
+    <rtconnect from="JAXON_RED(Robot)0.rtc:HEAD_RIGHT_POINTGREY_CAMERA"
+               to="HEADRIGHTPOINTGREY.rtc:timedImage" />
+    <rtactivate component="HEADRIGHTPOINTGREY.rtc" />
+    <remap from="image_raw" to="image_rect_color" />
+  </node>
+  <node name="right_pointgrey_image_rect_relay"
+        pkg="topic_tools" type="relay"
+        args="/pointgrey/right/image_rect_color /pointgrey/right/image_rect" />
 
   <node pkg="hrpsys_ros_bridge" name="range_bridge"
         type="RangeSensorROSBridge"
@@ -85,6 +116,9 @@
   <node name="head_left_frame_id" pkg="tf"
         type="static_transform_publisher"
         args="0 0 0 0 0 0 /HEAD_LEFT_CAMERA left_camera_optical_frame 20" />
+  <node name="head_left_pointgrey_frame_id" pkg="tf"
+        type="static_transform_publisher"
+        args="0.0957 0.115 0.0495 0 0 0 /HEAD_LINK1 left_pointgrey_camera_optical_frame 100" />
   <node name="head_range_frame_id" pkg="tf"
         type="static_transform_publisher"
         args="0 0 0 0 0 0 /HEAD_RANGE head_hokuyo_frame 20" />
