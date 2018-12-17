@@ -492,7 +492,7 @@ DEF JAXON_JVRC Humanoid {
                               width 1280
                               height 1024
                               frameRate 100
-                              fieldOfView 0.5726
+                              fieldOfView 0.5863
                               sensorId 7
                             }
                             DEF HEAD_RIGHT_POINTGREY_CAMERA VisionSensor {
@@ -505,7 +505,7 @@ DEF JAXON_JVRC Humanoid {
                               width 1280
                               height 1024
                               frameRate 100
-                              fieldOfView 0.5726
+                              fieldOfView 0.5863
                               sensorId 8
                             }
                             DEF HeadMainLight SpotLightDevice {
