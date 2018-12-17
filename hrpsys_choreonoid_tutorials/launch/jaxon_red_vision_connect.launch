@@ -48,11 +48,13 @@
     <rtconnect from="JAXON_RED(Robot)0.rtc:HEAD_LEFT_POINTGREY_CAMERA"
                to="HEADLEFTPOINTGREY.rtc:timedImage" />
     <rtactivate component="HEADLEFTPOINTGREY.rtc" />
-    <remap from="image_raw" to="image_rect_color" />
+    <remap from="image_raw" to="image_raw_large" />
+    <remap from="camera_info" to="camera_info_large" />
+    <!--remap from="image_raw" to="image_rect_color" /-->
   </node>
-  <node name="left_pointgrey_image_rect_relay"
+  <!--node name="left_pointgrey_image_rect_relay"
         pkg="topic_tools" type="relay"
-        args="/pointgrey/left/image_rect_color /pointgrey/left/image_rect" />
+        args="/pointgrey/left/image_rect_color /pointgrey/left/image_rect" /-->
 
   <node pkg="hrpsys_ros_bridge" name="HEADRIGHT"
         type="ImageSensorROSBridge"
@@ -75,15 +77,17 @@
     <!-- right camera tf is calculated from left camera frame -->
     <param name="frame_id" value="left_pointgrey_camera_optical_frame" />
     <rosparam param="camera_param_K">[1676.351134, 0, 644.220635, 0, 1673.217380, 541.639625, 0, 0, 1]</rosparam>
-    <rosparam param="camera_param_P">[1696.104238, 0, 608.731544, 391.526732, 0, 1696.104238, 555.575878, 0, 0, 0, 1, 0]</rosparam>
+    <rosparam param="camera_param_P">[1696.104238, 0, 608.731544, -391.526732, 0, 1696.104238, 555.575878, 0, 0, 0, 1, 0]</rosparam>
     <rtconnect from="JAXON_RED(Robot)0.rtc:HEAD_RIGHT_POINTGREY_CAMERA"
                to="HEADRIGHTPOINTGREY.rtc:timedImage" />
     <rtactivate component="HEADRIGHTPOINTGREY.rtc" />
-    <remap from="image_raw" to="image_rect_color" />
+    <remap from="image_raw" to="image_raw_large" />
+    <remap from="camera_info" to="camera_info_large" />
+    <!--remap from="image_raw" to="image_rect_color" /-->
   </node>
-  <node name="right_pointgrey_image_rect_relay"
+  <!--node name="right_pointgrey_image_rect_relay"
         pkg="topic_tools" type="relay"
-        args="/pointgrey/right/image_rect_color /pointgrey/right/image_rect" />
+        args="/pointgrey/right/image_rect_color /pointgrey/right/image_rect" /-->
 
   <node pkg="hrpsys_ros_bridge" name="range_bridge"
         type="RangeSensorROSBridge"
