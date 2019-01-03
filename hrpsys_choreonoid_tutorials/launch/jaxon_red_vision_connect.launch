@@ -43,8 +43,8 @@
         type="ImageSensorROSBridge"
         output="$(arg OUTPUT)" args="$(arg openrtm_args)" ns="pointgrey/left">
     <param name="frame_id" value="left_pointgrey_camera_optical_frame" />
-    <rosparam param="camera_param_K">[1675.211023, 0, 664.239314, 0, 1670.672402, 565.432405, 0, 0, 1]</rosparam>
-    <rosparam param="camera_param_P">[1696.104238, 0, 608.731544, 0, 0, 1696.104238, 555.575878, 0, 0, 0, 1, 0]</rosparam>
+    <rosparam param="camera_param_K">[968.269481, 0, 622.573967, 0, 967.206041, 513.080475, 0, 0, 1]</rosparam>
+    <rosparam param="camera_param_P">[891.959633, 0, 556.986137, 0, 0, 891.959633, 519.328228, 0, 0, 0, 1, 0]</rosparam>
     <rtconnect from="JAXON_RED(Robot)0.rtc:HEAD_LEFT_POINTGREY_CAMERA"
                to="HEADLEFTPOINTGREY.rtc:timedImage" />
     <rtactivate component="HEADLEFTPOINTGREY.rtc" />
@@ -76,8 +76,8 @@
         output="$(arg OUTPUT)" args="$(arg openrtm_args)" ns="pointgrey/right">
     <!-- right camera tf is calculated from left camera frame -->
     <param name="frame_id" value="left_pointgrey_camera_optical_frame" />
-    <rosparam param="camera_param_K">[1676.351134, 0, 644.220635, 0, 1673.217380, 541.639625, 0, 0, 1]</rosparam>
-    <rosparam param="camera_param_P">[1696.104238, 0, 608.731544, -391.526732, 0, 1696.104238, 555.575878, 0, 0, 0, 1, 0]</rosparam>
+    <rosparam param="camera_param_K">[951.498080, 0, 639.979279, 0, 950.995913, 525.855577, 0, 0, 1]</rosparam>
+    <rosparam param="camera_param_P">[891.959633, 0, 556.986137, -204.560055, 0, 891.959633, 519.328228, 0, 0, 0, 1, 0]</rosparam>
     <rtconnect from="JAXON_RED(Robot)0.rtc:HEAD_RIGHT_POINTGREY_CAMERA"
                to="HEADRIGHTPOINTGREY.rtc:timedImage" />
     <rtactivate component="HEADRIGHTPOINTGREY.rtc" />
